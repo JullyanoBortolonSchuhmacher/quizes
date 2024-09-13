@@ -3,20 +3,17 @@ function Home() {
     ? parseInt(localStorage.getItem("nRotinas"), 10)
     : 0;
 
-  const definindoNumeroDeRotinasParaTeste = localStorage.setItem(
-    "nRotinas",
-    -12345,
-  ); //vai sumir depois é apenas para teste
+  const oioi = localStorage.setItem("nRotinas", -12345, oioi); //vai sumir depois é apenas para teste
 
   return (
     <div className="container">
-      <h1>Crie suas Rotinas Diárias</h1>
+      <h1>Crie seu Quiz Personalizado!</h1>
       <p>
-        Organize seu dia e alcance seus objetivos com rotinas personalizadas.
+        Organize suas perguntas e crie uma sala personalizada. Para se divertir
       </p>
 
       <div className="contador-rotinas">
-        <span>Rotinas criadas: {numRotinas}</span>
+        <span>Quizes já criados: {numRotinas}</span>
       </div>
     </div>
   );
