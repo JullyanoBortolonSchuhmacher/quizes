@@ -6,6 +6,8 @@
     --l-text-secondary: #666666;
     --l-accent: #4caf50;
     --l-accent-hover: #43a047;
+    --l-error: #c74545;
+    --l-link: #41a3ff;
 
     /* Tema escuro */
     --d-bg: #121212;
@@ -14,6 +16,8 @@
     --d-text-secondary: #b3b3b3;
     --d-accent: #4caf50;
     --d-accent-hover: #66bb6a;
+    --d-error: #c74545;
+    --d-link: #067ceb;
 
     /* Tema (variaveis genéricas) */
     --background: var(--l-bg);
@@ -22,19 +26,43 @@
     --text-secondary: var(--l-text-secondary);
     --accent: var(--l-accent);
     --accent-hover: var(--l-accent-hover);
+    --error: var(--l-error);
+    --link: var(--l-link);
 }
 
 :root:has(#selcTema option[value="dark"]:checked) {
     --background: var(--d-bg);
-    --bg-secondary: var(--d-bg-secondary);
+    --background-s: var(--d-bg-secondary);
     --text: var(--d-text);
     --text-secondary: var(--d-text-secondary);
     --accent: var(--d-accent);
     --accent-hover: var(--d-accent-hover);
+    --error: var(--d-error);
+    --link: var(--d-link);
 }
 
 body {
     background-color: var(--background);
     color: var(--text);
     font-family: sans-serif, Inter;
+    font-size: clamp(0.8rem, 8vw, 1rem);
+    transition: all 0.5s ease;
 }
+
+a {
+    color: var(--text);
+    text-emphasis: none;
+    text-decoration: none;
+}
+
+/* navegadores: */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+  
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  

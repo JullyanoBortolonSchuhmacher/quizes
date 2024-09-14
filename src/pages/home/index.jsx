@@ -3,7 +3,7 @@ function Home() {
     ? parseInt(localStorage.getItem("nRotinas"), 10)
     : 0;
 
-  const oioi = localStorage.setItem("nRotinas", -12345, oioi); //vai sumir depois é apenas para teste
+  const oioi = localStorage.setItem("nRotinas", -12345); //vai sumir depois é apenas para teste
 
   return (
     <div className="container">
