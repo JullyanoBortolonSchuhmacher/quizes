@@ -1,0 +1,41 @@
+.termos--container {
+    margin-bottom: 20px;
+}
+
+.termos--titulo {
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+.termos--conteudo {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+}
+
+.termos--conteudo.ativo {
+    display: block;
+    transition: 0.3s all ease-in-out;
+}
+
+.termos--icone {
+    font-size: 16px;
+    margin-right: 10px;
+    transition: 0.3s all ease-in-out;
+}
+
+.termos--checkbox-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.termos--checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+}
