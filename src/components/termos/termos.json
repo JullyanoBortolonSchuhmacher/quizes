@@ -1,0 +1,44 @@
+{
+  "termos": [
+    {
+      "titulo": "1. Responsabilidade pelo Conteúdo",
+      "itens": [
+        "Você é o único responsável pelo conteúdo que cria e compartilha em nosso aplicativo.",
+        "Não nos responsabilizamos pelo conteúdo gerado pelos usuários, incluindo quaisquer informações, textos, imagens, áudios ou vídeos.",
+        "Você garante que o conteúdo que você cria e compartilha não viola nenhuma lei ou direito de terceiros."
+      ]
+    },
+    {
+      "titulo": "2. Remoção de Conteúdo",
+      "itens": [
+        "Reservamo-nos o direito de remover qualquer conteúdo que consideremos ofensivo, ilegal ou que viole estes Termos de Uso.",
+        "Sua conta poderá ser suspensa ou excluída caso você viole repetidamente estes Termos de Uso."
+      ]
+    },
+    {
+      "titulo": "3. Privacidade e Segurança de Dados",
+      "itens": [
+        "Embora nos esforcemos para proteger a privacidade e a segurança dos seus dados, não nos responsabilizamos por quaisquer vazamentos ou perdas de dados que possam ocorrer.",
+        "Você é responsável por manter a confidencialidade de sua conta e senha."
+      ]
+    },
+    {
+      "titulo": "4. Limitação de Responsabilidade",
+      "itens": [
+        "Não nos responsabilizamos por quaisquer danos, diretos ou indiretos, decorrentes do uso de nosso aplicativo.",
+        "Nosso aplicativo é fornecido \"no estado em que se encontra\", sem garantias de qualquer tipo."
+      ]
+    },
+    {
+      "titulo": "5. Alterações nos Termos de Uso",
+      "itens": [
+        "Reservamo-nos o direito de alterar estes Termos de Uso a qualquer momento, sem aviso prévio.",
+        "É sua responsabilidade verificar periodicamente eventuais atualizações destes Termos de Uso."
+      ]
+    }
+  ],
+  "conclusao": [
+    "Ao utilizar nosso aplicativo, você concorda com estes Termos de Uso.",
+    "Caso não concorde com algum destes termos, por favor, não utilize nosso serviço."
+  ]
+}

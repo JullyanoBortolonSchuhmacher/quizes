@@ -1,83 +1,82 @@
-.cadastro--container{
-  display: flex;
-  flex-direction: column;
+.cadastro--container {
+    display: flex;
+    flex-direction: column;
+    background: var(--background-s);
+    border-radius: 1rem;
+    padding: 3rem;
+}
+
+.cadastro--container a,
+h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cadastro--perguntas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  padding: 1rem;
-  gap: 1.5rem;
+    margin-inline: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 1rem;
+    gap: 1.5rem;
 }
 
 .cadastro--botoes {
-  display: grid;
-  grid-template-columns: auto auto;
-  padding: 2rem;
-  gap: 1rem;
-  justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 2rem;
+    gap: 1rem;
+    justify-content: center;
 }
 
 /* elementos */
 .cadastro--perguntas div {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .cadastro--perguntas input {
-  padding: 0.8rem 1rem;
-  border-radius: 24px;
-  border: none;
-  color: var(--text);
-  background: var(--background-s);
+    padding: 0.8rem 1rem;
+    border-radius: 24px;
+    border: none;
+    color: var(--text);
+    background: var(--background);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease;
 }
 
 .cadastro--erros {
-  color: var(--error);
-}
-
-#dataNasc {
-  color: #777;
-}
-
-/* UIUX -> usuario entende que é link */
-.link-visual {
-  color: var(--link);
-  text-decoration: underline;
+    color: var(--error);
 }
 
 .cadastro--botoes {
-  display: flex;
+    display: flex;
 }
 
 .cadastro--botoes button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: var(--tertiary);
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .cadastro--botoes button:hover {
-  background-color: #0056b3;
+    background-color:;
 }
 
 .cadastro--botoes button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+    background-color: #bbb;
+    cursor: not-allowed;
 }
 
+/* conjuntos */
+.cadastro--emails {
+    gap: 1rem;
+}
 
-/* navegadores: */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none;
+.cadastro--senhas {
+    gap: 1rem;
 }
-  
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-  
