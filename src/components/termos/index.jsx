@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import Termos from "./mapaTermos.jsx";
 import "./termos.css";
 
@@ -30,6 +31,10 @@ const TermosDeUso = ({ onAceitar }) => {
       </div>
     </div>
   );
+};
+
+TermosDeUso.propTypes = {
+  onAceitar: PropTypes.func.isRequired,
 };
 
 export default TermosDeUso;
