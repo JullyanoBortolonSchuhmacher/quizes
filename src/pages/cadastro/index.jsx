@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -13,7 +12,7 @@ export function Cadastro() {
     watch,
   } = useForm();
 
-  const [aceitoTermos, setAceitoTermos] = useState(false);
+  const aceitoTermos = false;
 
   const onSubmit = () => {
     const dados = {
@@ -135,7 +134,7 @@ export function Cadastro() {
           </div>
         </div>
         <div className="termosDeUso">
-          <TermosDeUso onAceitar={(aceito) => setAceitoTermos(aceito)} />
+          <TermosDeUso aceito={aceitoTermos} />
         </div>
         <div className="cadastro--botoes">
           <button

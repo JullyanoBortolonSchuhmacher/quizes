@@ -3,14 +3,8 @@ import PropTypes from "prop-types";
 import Termos from "./mapaTermos.jsx";
 import "./termos.css";
 
-const TermosDeUso = ({ onAceitar }) => {
-  const [aceito, setAceito] = useState(false);
+const TermosDeUso = ({ aceito }) => {
   const [ativo, setAtivo] = useState(false);
-
-  const handleAceitar = () => {
-    setAceito(!aceito);
-    onAceitar(!aceito);
-  };
 
   const handleToggle = () => {
     setAtivo(!ativo);
@@ -25,7 +19,7 @@ const TermosDeUso = ({ onAceitar }) => {
       <div className={`termos--conteudo ${ativo ? "ativo" : ""}`}>
         <Termos />
         <div className="termos--checkbox-container">
-          <input type="checkbox" checked={aceito} onChange={handleAceitar} />
+          <input type="checkbox" checked={aceito} readOnly />
           <label>Aceito os termos de uso</label>
         </div>
       </div>
@@ -34,7 +28,11 @@ const TermosDeUso = ({ onAceitar }) => {
 };
 
 TermosDeUso.propTypes = {
-  onAceitar: PropTypes.func.isRequired,
+  aceito: PropTypes.bool,
+};
+
+TermosDeUso.defaultProps = {
+  aceito: false,
 };
 
 export default TermosDeUso;
