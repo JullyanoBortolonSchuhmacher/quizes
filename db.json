@@ -1,0 +1,50 @@
+{
+  "usuarios": {
+    "1": {
+      "nome": "Admin",
+      "idade": "99",
+      "email": "adm@adm.org",
+      "senha": "(hash)"
+    }
+  },
+  "quizes": {
+    "user_ID(1)": {
+
+      "teste":{
+        "tittle": "TESTE de hoje",
+        "questions": {
+          "1": {
+            "tittle": "Qual é o ano atual?",
+            "A": "2025",
+            "B": "1999",
+            "C": "2024",
+            "D": "2023",
+            "answer": "2024"
+          },
+          "2": {
+            "tittle": "Qual é o mês atual?",
+            "A": "janeiro",
+            "B": "outrubro",
+            "C": "setembro",
+            "D": "agosto",
+            "answer": "setembro"
+          },
+          "3": {
+            "tittle": "Qual é o dia atual?",
+            "A": "1-7",
+            "B": "8-14",
+          "C": "15-21",
+          "D": "22-28+",
+          "answer": "15-21"
+        }
+      }
+    }
+    }
+  },
+  "salas": {
+    "1": {
+      "nome": "teste",
+      "id": "3433-8922"
+    }
+  }
+}

@@ -1,10 +1,21 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+import { useContext, useState } from "react";
 import "./cadastro.css";
 import TermosDeUso from "../../components/termos/index.jsx";
+import cadastroMiddleware from "../../middlewares/cadastro.midd.js";
+import { UserContext } from "../../context/UserContext.jsx";
 
 export function Cadastro() {
+
+  const { cadastroUsuario } = useContext(UserContext);
+
+  const [aceitoTermos, setAceitoTermos] = useState(false);
+
+  const handleAceitoChange = (aceito) => {
+    setAceitoTermos(aceito);
+  };
+
   const {
     register,
     handleSubmit,
@@ -12,16 +23,14 @@ export function Cadastro() {
     watch,
   } = useForm();
 
-  const aceitoTermos = false;
-
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const dados = {
       nome: watch("nome"),
       email: watch("email"),
       senha: watch("senha"),
       aceitoTermos: aceitoTermos,
     };
-    console.log(dados);
+    await cadastroMiddleware(dados, cadastroUsuario);
   };
 
   return (
@@ -134,8 +143,8 @@ export function Cadastro() {
           </div>
         </div>
         <div className="termosDeUso">
-          <TermosDeUso aceito={aceitoTermos} />
-        </div>
+          <TermosDeUso aceito={aceitoTermos} onAceitoChange={handleAceitoChange} />
+       </div>
         <div className="cadastro--botoes">
           <button
             type="submit"
