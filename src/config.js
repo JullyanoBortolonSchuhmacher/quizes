@@ -1,3 +1,3 @@
 export const porta = '3000';
 
-export const apiUrl = `http://localhost:${porta}`
+export const URL_DA_API = `http://localhost:${porta}`

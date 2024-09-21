@@ -1,50 +1,98 @@
 {
-  "usuarios": {
-    "1": {
-      "nome": "Admin",
-      "idade": "99",
-      "email": "adm@adm.org",
-      "senha": "(hash)"
+  "usuarios": [
+    {
+      "id": "55fb",
+      "nome": "Maria fernandes",
+      "email": "mariafern@gmail.com",
+      "senha": "123123123"
+    },
+    {
+      "id": "a9bb",
+      "nome": "Maria fernandes",
+      "email": "mariafern@gmail.com",
+      "senha": "123123123"
+    },
+    {
+      "id": "1eb3",
+      "nome": "Maria fernandes",
+      "email": "mariaferna@gmail.com",
+      "senha": "123123123a"
+    },
+    {
+      "id": "8a65",
+      "nome": "123",
+      "email": "kin@gm.co",
+      "senha": "kin@gm.co"
+    },
+    {
+      "id": "45d0",
+      "email": "maria@ia.ia",
+      "password": "maria@ia.ia"
+    },
+    {
+      "id": "b756",
+      "email": "maria@ia.ia",
+      "password": "maria@ia.ia"
+    },
+    {
+      "id": "282d",
+      "email": "maria@ia.ia",
+      "password": "maria@ia.ia"
+    },
+    {
+      "id": "3c79",
+      "email": "maria@ia.ia",
+      "password": "maria@ia.ia"
+    },
+    {
+      "id": "b0b7",
+      "email": "maria@ia.ia",
+      "password": "maria@ia.ia"
+    },
+    {
+      "id": "a120",
+      "email": "maria@ia.ia",
+      "password": "maria@ia.ia"
+    },
+    {
+      "id": "e11a",
+      "email": "maria@ia.ia",
+      "password": "maria@ia.ia"
+    },
+    {
+      "id": "0fff",
+      "email": "abc@ab.cc",
+      "password": "abc@ab.cc"
+    },
+    {
+      "id": "353c",
+      "email": "abc@ab.cc",
+      "password": "abc@ab.cc"
+    },
+    {
+      "id": "03a5",
+      "email": "abc@ab.cc",
+      "password": "abc@ab.cc"
+    },
+    {
+      "id": "93ad",
+      "email": "kin@gm.co",
+      "password": "kin@gm.co"
+    },
+    {
+      "id": "1d9f",
+      "email": "kin@gm.co",
+      "password": "kin@gm.co"
+    },
+    {
+      "id": "cd6d",
+      "email": "kin@gm.co",
+      "password": "kin@gm.co"
+    },
+    {
+      "id": "14a2",
+      "email": "kin@gm.co",
+      "password": "kin@gm.co"
     }
-  },
-  "quizes": {
-    "user_ID(1)": {
-
-      "teste":{
-        "tittle": "TESTE de hoje",
-        "questions": {
-          "1": {
-            "tittle": "Qual é o ano atual?",
-            "A": "2025",
-            "B": "1999",
-            "C": "2024",
-            "D": "2023",
-            "answer": "2024"
-          },
-          "2": {
-            "tittle": "Qual é o mês atual?",
-            "A": "janeiro",
-            "B": "outrubro",
-            "C": "setembro",
-            "D": "agosto",
-            "answer": "setembro"
-          },
-          "3": {
-            "tittle": "Qual é o dia atual?",
-            "A": "1-7",
-            "B": "8-14",
-          "C": "15-21",
-          "D": "22-28+",
-          "answer": "15-21"
-        }
-      }
-    }
-    }
-  },
-  "salas": {
-    "1": {
-      "nome": "teste",
-      "id": "3433-8922"
-    }
-  }
+  ]
 }

@@ -1,104 +1,83 @@
-import { useState, useEffect, createContext } from "react";
-import PropTypes from "prop-types";
-import { apiUrl } from '../config';
-import axios from "axios";
+import { createContext, useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { URL_DA_API } from '../config.js';
 
-export const UserContext = createContext();
+export const UsuariosContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [users, setUsers] = useState([]);
-  const [isLogado, setIsLogado] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [usuarios, setUsuarios] = useState([]);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState(null);
 
-  // cria
-  async function cadastroUsuario(user) {
-    try {
-      const response = await axios.post(`${apiUrl}/usuarios`, user);
-      setUsers([...users, response.data]);
-    } catch (error) {
-      console.error('Erro ao criar usuário:', error);
-    }
-  };
-
-  // deleta
-  async function deleteUsuario(userId) {
-    try {
-      const response = await axios.delete(`${apiUrl}/usuarios/${userId}`);
-      setUsers(users.filter(user => user.id !== userId));
-      if (userData && userData.id === userId) {
-        setUserData(null);
+  useEffect(() => {
+    const buscarUsuarios = async () => {
+      setCarregando(true);
+      try {
+        const resposta = await axios.get(URL_DA_API + '/usuarios');
+        setUsuarios(resposta.data);
+      } catch (err) {
+        setErro(err.message);
+      } finally {
+        setCarregando(false);
       }
-    } catch (error) {
-      console.error('Erro ao deletar usuário:', error);
+    };
+    buscarUsuarios();
+  }, []);
+
+  const cadastrarUsuario = async (novoUsuario) => {
+    try {
+      const resposta = await axios.post(URL_DA_API + '/usuarios', novoUsuario);
+      setUsuarios([...usuarios, resposta.data]);
+    } catch (err) {
+      setErro(err.message);
     }
   };
 
-  // lista com o id
-  async function listaUsuarioPorID(userId) {
+  const atualizarUsuario = async (usuarioAtualizado) => {
     try {
-      const response = await axios.get(`${apiUrl}/usuarios/${userId}`);
-      return response.data;
-    } catch (error) {
-      console.error('Erro ao buscar usuário:', error.message);
-      throw error;
-    }
-  };
-  
-  // lista todos
-  async function listaUsuarios() {
-    try {
-      const response = await axios.get(`${apiUrl}/usuarios`);
-      setUsers(response.data);
-    } catch (error) {
-      console.error('Erro ao listar usuários:', error.message);
-      throw error;
+      await axios.put(URL_DA_API + `/usuarios/${usuarioAtualizado.id}`, usuarioAtualizado);
+      setUsuarios(usuarios.map(usuario => (usuario.id === usuarioAtualizado.id ? usuarioAtualizado : usuario)));
+    } catch (err) {
+      setErro(err.message);
     }
   };
 
-  async function login(email, senha) {
+  const deletarUsuario = async (idUsuario) => {
     try {
-      const response = await fetch(`${apiUrl}/usuarios`);
-      const users = await response.json();
-      const user = users.find(user => user.email === email && user.senha === senha);
-      if (user) {
-        localStorage.setItem('userId', user.id.toString());
-        setIsLogado(true);
-        setUserData(user);
-        return user;
-      } else {
-        setIsLogado(false);
-        throw new Error("E-mail ou senha estão errados");
-      }
+      await axios.delete(URL_DA_API + `/usuarios/${idUsuario}`);
+      setUsuarios(usuarios.filter(usuario => usuario.id !== idUsuario));
+    } catch (err) {
+      setErro(err.message);
+    }
+  };
+
+  const fazerLogin = async (email, password) => {
+    try {
+      const response = await axios.post(URL_DA_API + '/usuarios', { email, password }); 
+      const { user } = response.data;
+      localStorage.setItem("logado", true)
     } catch (error) {
       console.error('Erro ao fazer login:', error);
     }
   };
 
-  function logout() {
-    setUser(null);
-    setIsLogado(false);
-    setUserData(null);
-    localStorage.removeItem("userId");
-  };
-
-  useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-      listaUsuarioPorID(userId).then(user => {
-        setUser(user);
-        setUserData(user);
-      });
-    }
-  }, []);
-
   return (
-    <UserContext.Provider value={{ user, users, isLogado, userData, login, logout, cadastroUsuario, deleteUsuario, listaUsuarios }}>
+    <UsuariosContext.Provider value={{
+      usuarios,
+      carregando,
+      erro,
+      cadastrarUsuario,
+      atualizarUsuario,
+      deletarUsuario,
+      fazerLogin
+    }}>
       {children}
-    </UserContext.Provider>
+    </UsuariosContext.Provider>
   );
 };
 
-UserProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+export default UserProvider
+
+export const useUsers = () => {
+  return useContext(UsuariosContext);
 };

@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./login.css";
+import { useUsers } from "../../context/UserContext";
 
 function Login() {
   const {
@@ -8,16 +10,26 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [erroLogin, setErroLogin] = useState("");
+  const { fazerLogin } = useUsers();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    setErroLogin("");
+    try {
+      await fazerLogin(data.email, data.password);
+    } catch (error) {
+      setErroLogin("Email ou senha inválidos");
+      console.error(error);
+    }
   };
 
   return (
     <div className="login--container">
-      <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="login--form">
+          <h2>login</h2>
           <input
             type="email"
             placeholder="E-mail"
@@ -30,7 +42,9 @@ function Login() {
               },
             })}
           />
-          {errors.email && <span>{errors.email.message}</span>}
+          {errors.email && (
+            <span className="cadastro--erros">{errors.email.message}</span>
+          )}
 
           <input
             type="password"
@@ -44,10 +58,13 @@ function Login() {
               },
             })}
           />
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.password && (
+            <span className="cadastro--erros">{errors.password.message}</span>
+          )}
         </div>
         <div className="login--botoes">
           <button type="submit">Entrar</button>
+          {erroLogin && <span className="cadastro--erros">{erroLogin}</span>}
           <span>
             Não possuí conta?{" "}
             <Link to="/cadastro" className="link-visual">

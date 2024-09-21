@@ -1,36 +1,39 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-import "./cadastro.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import { useUsers } from '../../context/UserContext.jsx'
 import TermosDeUso from "../../components/termos/index.jsx";
-import cadastroMiddleware from "../../middlewares/cadastro.midd.js";
-import { UserContext } from "../../context/UserContext.jsx";
+import "./cadastro.css";
 
-export function Cadastro() {
+function Cadastro() {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { cadastrarUsuario } = useUsers();
+  const navigate = useNavigate();
 
-  const { cadastroUsuario } = useContext(UserContext);
 
-  const [aceitoTermos, setAceitoTermos] = useState(false);
-
-  const handleAceitoChange = (aceito) => {
-    setAceitoTermos(aceito);
+  const onSubmit = async (data) => {
+    const dados = {
+      nome: data.nome,
+      email: data.email,
+      senha: data.senha,
+    };
+    try {
+      await cadastrarUsuario(dados);
+      console.log('Usuário cadastrado com sucesso!');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
+    } catch (error) {
+      console.error('Erro ao cadastrar usuário:', error);
+    }
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm();
 
-  const onSubmit = async () => {
-    const dados = {
-      nome: watch("nome"),
-      email: watch("email"),
-      senha: watch("senha"),
-      aceitoTermos: aceitoTermos,
-    };
-    await cadastroMiddleware(dados, cadastroUsuario);
+  const [aceitoTermos, setAceitoTermos] = useState(false);
+  
+  const handleAceitoChange = (aceito) => {
+    setAceitoTermos(aceito);
   };
 
   return (
@@ -104,18 +107,18 @@ export function Cadastro() {
           <div className="cadastro--senhas">
             {/* Senha */}
             <div>
-              <input
-                type="password"
-                placeholder="Senha"
-                id="senha"
-                {...register("senha", {
-                  required: "A senha é obrigatória",
-                  minLength: {
-                    value: 8,
-                    message: "A senha deve ter no mínimo 8 caracteres",
-                  },
-                })}
-              />
+            <input
+              type="password"
+              placeholder="Senha"
+              id="senha"
+              {...register("senha", {
+                required: "A senha é obrigatória",
+                minLength: {
+                  value: 8,
+                  message: "A senha deve ter no mínimo 8 caracteres",
+                }
+              })}
+            />
               {errors.senha && (
                 <span className="cadastro--erros">{errors.senha.message}</span>
               )}
